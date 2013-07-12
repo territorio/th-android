@@ -8,6 +8,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.app.TimePickerDialog;
 import android.app.TimePickerDialog.OnTimeSetListener;
@@ -96,6 +97,26 @@ public class DatePickerPlugin extends CordovaPlugin {
 					final DateSetListener dateSetListener = new DateSetListener(datePickerPlugin, callbackContext);
 					final DatePickerDialog dateDialog = new DatePickerDialog(currentCtx, dateSetListener, mYear,
 							mMonth, mDay);
+					
+					final DatePickerDialog.OnCancelListener mDateCancelListener =
+						    new DatePickerDialog.OnCancelListener() {
+						        public void onCancel(DialogInterface dialog) {
+						        	Log.d(pluginName, "on Cancel dialog");
+						        	callbackContext.success( new JSONObject() );   
+						        }
+
+						    };
+						    
+					dateDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancelar", new DialogInterface.OnClickListener()  {
+					    public void onClick(DialogInterface dialog, int which) {
+					    	if (which == DialogInterface.BUTTON_NEGATIVE) {
+					    		Log.d(pluginName, "on Cancel button negative");
+					    		callbackContext.success( new JSONObject() );	
+					    	}
+					    }
+					});
+					dateDialog.setOnCancelListener(mDateCancelListener);
+					
 					dateDialog.show();
 				}
 			};
