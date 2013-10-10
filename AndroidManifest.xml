@@ -2,8 +2,8 @@
     android:windowSoftInputMode="adjustPan"
     android:hardwareAccelerated="false"
     package="com.territorio.th"
-    android:versionCode="4"
-    android:versionName="1.0" >
+    android:versionCode="1"
+    android:versionName="1.1" >
     
     <supports-screens
         android:largeScreens="true"
