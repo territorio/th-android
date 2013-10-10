@@ -2,7 +2,7 @@
     android:windowSoftInputMode="adjustPan"
     android:hardwareAccelerated="false"
     package="com.territorio.th"
-    android:versionCode="1"
+    android:versionCode="6"
     android:versionName="1.1" >
     
     <supports-screens
